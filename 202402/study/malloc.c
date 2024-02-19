@@ -33,3 +33,57 @@ int main(void)
 
     return 0;
 }*/
+//
+//#include <stdio.h>
+//#include <string.h>
+//#include <malloc.h>
+//
+//void GetMemory(char** p)
+//{
+//    *p = (char*)malloc(100);
+//}
+//
+//void Test(void)
+//{
+//    char* str = NULL;
+//    GetMemory(&str);      //传址
+//    strcpy(str, "hello world!\n");
+//    printf(str);
+//    free(str);
+//    str = NULL;
+//}
+//
+//int main(void)
+//{
+//    Test();
+//
+//    return 0;
+//}
+
+
+#include <stdio.h>
+#include <string.h>
+#include <malloc.h>
+
+char* GetMemory()
+{
+    char* p = (char*)malloc(100);
+    return p;
+}
+
+void Test(void)
+{
+    char* str = NULL;
+    str = GetMemory();      //相当于传值，malloc创建的空间在堆区
+    strcpy(str, "hello world!\n");
+    printf(str);
+    free(str);
+    str = NULL;
+}
+
+int main(void)
+{
+    Test();
+
+    return 0;
+}
