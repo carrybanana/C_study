@@ -5,4 +5,6 @@ set(CMAKE_C_STANDARD 11)
 
 add_executable(study
         malloc.c
-        calloc.c)
+        calloc.c
+        flexible_array.c
+        flexible_array.c)
