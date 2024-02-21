@@ -7,4 +7,6 @@ add_executable(study
         malloc.c
         calloc.c
         flexible_array.c
-        flexible_array.c)
+        flexible_array.c
+        flie_r_w.c
+        flie_r_w.c)
