@@ -22,7 +22,7 @@ void sltest() {
     //打印链表
     SLNode* plist = node1;
     SLPrint(plist);
-}       //打印
+}         //打印
 
 void sltest01() {   //尾插
     SLNode* plist = NULL;
@@ -126,14 +126,114 @@ void sltest05() {
     SLPrint(plist);
 }       //pos位置之前插入数据
 
+void sltest06() {
+    SLNode* plist = NULL;
+    SLNode* node1 = (SLNode*)malloc(sizeof(SLNode));
+    node1->data = 1;
+    SLNode* node2 = (SLNode*)malloc(sizeof(SLNode));
+    node2->data = 2;
+    SLNode* node3 = (SLNode*)malloc(sizeof(SLNode));
+    node3->data = 3;
+    SLNode* node4 = (SLNode*)malloc(sizeof(SLNode));
+    node4->data = 4;
+
+    node1->next = node2;
+    node2->next = node3;
+    node3->next = node4;
+    node4->next = NULL;
+
+    plist = node1;
+
+    SLPrint(plist);
+
+    SLNode* find = SLFind(&plist, 4);
+
+    SLInsertAfter(find, 100);
+    SLPrint(plist);
+}       //pos位置之后插入数据
+
+void sltest07() {
+    SLNode* plist = NULL;
+    SLNode* node1 = (SLNode*)malloc(sizeof(SLNode));
+    node1->data = 1;
+    SLNode* node2 = (SLNode*)malloc(sizeof(SLNode));
+    node2->data = 2;
+    SLNode* node3 = (SLNode*)malloc(sizeof(SLNode));
+    node3->data = 3;
+    SLNode* node4 = (SLNode*)malloc(sizeof(SLNode));
+    node4->data = 4;
+
+    node1->next = node2;
+    node2->next = node3;
+    node3->next = node4;
+    node4->next = NULL;
+
+    plist = node1;
+    SLPrint(plist);
+
+    SLNode* find = SLFind(&plist, 1);
+    SLErase(&plist,find);
+    SLPrint(plist);
+
+}       //删除pos位置节点
+
+void sltest08() {
+    SLNode* plist = NULL;
+    SLNode* node1 = (SLNode*)malloc(sizeof(SLNode));
+    node1->data = 1;
+    SLNode* node2 = (SLNode*)malloc(sizeof(SLNode));
+    node2->data = 2;
+    SLNode* node3 = (SLNode*)malloc(sizeof(SLNode));
+    node3->data = 3;
+    SLNode* node4 = (SLNode*)malloc(sizeof(SLNode));
+    node4->data = 4;
+
+    node1->next = node2;
+    node2->next = node3;
+    node3->next = node4;
+    node4->next = NULL;
+
+    plist = node1;
+    SLPrint(plist);
+
+    SLNode* find = SLFind(&plist, 1);
+    SLEraseAfter(find);
+    SLPrint(plist);
+}       //删除pos位置之后的1个节点
+
+void sltest09() {
+    SLNode* plist = NULL;
+    SLNode* node1 = (SLNode*)malloc(sizeof(SLNode));
+    node1->data = 1;
+    SLNode* node2 = (SLNode*)malloc(sizeof(SLNode));
+    node2->data = 2;
+    SLNode* node3 = (SLNode*)malloc(sizeof(SLNode));
+    node3->data = 3;
+    SLNode* node4 = (SLNode*)malloc(sizeof(SLNode));
+    node4->data = 4;
+
+    node1->next = node2;
+    node2->next = node3;
+    node3->next = node4;
+    node4->next = NULL;
+
+    plist = node1;
+    SLPrint(plist);
+
+    SLDesTory(&plist);
+    SLPrint(plist);
+}       //销毁链表
+
 int main(void) {
     // sltest();           //打印
     // sltest01();         //尾插
     // sltest02();         //头插
     // sltest03();         //尾删
     // sltest04();         //头删
-    sltest05();         //pos位置之前插入数据
-
-
+    // sltest05();         //pos位置之前插入数据
+    // sltest06();         //在pos位置之后插入数据
+    // sltest07();         //删除pos位置节点
+    // sltest08();           //删除pos位置之后的1个节点
+    sltest09();         //销毁链表
     return 0;
 }

@@ -129,4 +129,54 @@ void SLInsert(SLNode** pphead, SLNode* pos, SLDataType x) {
 }
 
 //指定位置之后插入数据
-void SLInsertAfter(SLNode* pos, SLDataType x);
+void SLInsertAfter(SLNode* pos, SLDataType x) {
+    assert(pos);
+    SLNode* node = SLBuyNode(x);
+    // pos node pos->next
+    node->next = pos->next;
+    pos->next = node;
+}
+
+//删除pos节点
+void SLErase(SLNode** pphead, SLNode* pos) {
+    assert(pphead);
+    assert(*pphead);
+    assert(pos);
+    if(pos == *pphead) {
+        *pphead = (*pphead)->next;
+        free(pos);
+        pos = NULL;
+        return;
+    }
+    //找pos前一个节点
+    SLNode* prev = *pphead;
+    while (prev->next != pos) {
+        prev = prev->next;
+    }
+    //prev pos pos->next
+    prev->next = pos->next;
+    free(pos);
+    pos = NULL;
+}
+
+//删除pos之后的一个节点
+void SLEraseAfter(SLNode* pos) {
+    assert(pos  && pos->next);
+    SLNode* del = pos->next;
+    pos->next = del->next;
+    free(del);
+    del = NULL;
+}
+
+//链表的销毁
+void SLDesTory(SLNode** pphead) {
+    assert(pphead);
+    SLNode* pcur = *pphead;
+    //循环删除
+    while(pcur) {
+        SLNode* next = pcur->next;
+        free(pcur);
+        pcur = next;
+    }
+    *pphead = NULL;
+}
