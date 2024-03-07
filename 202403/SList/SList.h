@@ -34,7 +34,12 @@ SLNode* SLFind(SLNode** pphead,SLDataType x);
 void SLInsert(SLNode** pphead, SLNode* pos, SLDataType x);
 //指定位置之后插入数据
 void SLInsertAfter(SLNode* pos, SLDataType x);
-
+//删除pos节点
+void SLErase(SLNode** pphead, SLNode* pos);
+//删除pos之后节点
+void SLEraseAfter(SLNode* pos);
+//链表的销毁
+void SLDesTory(SLNode** pphead);
 
 
 #endif //SLIST_H
